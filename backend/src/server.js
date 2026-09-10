@@ -8,10 +8,7 @@ const todos = [];
 
 app.use(express.json());
 app.use(cors({
-    origin: [
-        "http://localhost:5500",
-        "http://10.42.0.1:5500"
-    ]
+    origin: "https://todoapplication-0f72.onrender.com"
 }));
 
 app.get("/api/todos", (req, res) => {
@@ -84,9 +81,10 @@ app.post("/api/todos", (req, res) => {
     });
 })
 
+const PORT = process.env.PORT || 8055;
 
-
-app.listen(8055, "0.0.0.0", () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log("server is ready!");
+});
 
-})
+
