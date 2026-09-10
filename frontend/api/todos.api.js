@@ -1,4 +1,4 @@
-const API_URL = `http://${window.location.hostname}:8055/api/todos`;
+const API_URL = `https://todoapplicationbackend-rzn5.onrender.com/api/todos`;
 
 export async function addTodo(text) {
     const response = await fetch(API_URL, {
