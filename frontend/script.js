@@ -48,11 +48,14 @@ async function handleDeleteTodo(event) {
             selectedMessageArea = null;
 
             deleteBtn.classList.add("hide");
+            const todoCount = todoArea.querySelectorAll(".messageArea").length;
+            taskCount.textContent = `${todoCount} tasks`;
 
-            taskCount.textContent = `${todoArea.querySelectorAll(".messageArea").length} tasks`;
-
-            if (todoArea.querySelectorAll(".messageArea").length == 0) {
-                todoArea.querySelector(".emptyState").classList.remove("hide");
+            if (todoCount == 0) {
+                const emptyState = document.createElement("p");
+                emptyState.classList.add("emptyState");
+                emptyState.textContent = "Your list is clear. Add something small to get started.";
+                todoArea.appendChild(emptyState);
             }
 
         } catch (error) {
@@ -186,6 +189,16 @@ async function handelAddTodo() {
     try {
         const response = await addTodo(text);
         renderTodo(text, response.id, false, response.createdAt);
+        
+        const emptyState = todoArea.querySelector(".emptyState");
+
+        if (emptyState) {
+            emptyState.remove();
+        }
+
+        input.value = "";
+        taskCount.textContent = `${todoArea.querySelectorAll(".messageArea").length} tasks`;
+
     } catch (error) {
         console.error("There is a problem in creating todo");
     } finally {
@@ -194,14 +207,6 @@ async function handelAddTodo() {
 
 
 
-    if (todoArea.querySelector(".emptyState")) {
-        todoArea.querySelector(".emptyState").classList.add("hide");
-    }
-
-
-
-    input.value = "";
-    taskCount.textContent = `${todoArea.querySelectorAll(".messageArea").length} tasks`;
 }
 
 
