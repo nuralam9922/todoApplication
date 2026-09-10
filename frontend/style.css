@@ -1,0 +1,356 @@
+:root {
+    color-scheme: light;
+    --page: #f5f7f4;
+    --surface: #ffffff;
+    --ink: #17231f;
+    --muted: #78847e;
+    --line: #e2e8e3;
+    --accent: #267a68;
+    --accent-dark: #1f6456;
+    --soft-accent: #e9f3ef;
+    --danger: #b94b4b;
+    --shadow: 0 18px 45px rgba(30, 56, 47, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 10px;
+    background: var(--page);
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    
+}
+
+body.dark {
+    color-scheme: dark;
+    --page: #151c1a;
+    --surface: #202b27;
+    --ink: #edf5f0;
+    --muted: #9aaea5;
+    --line: #35443e;
+    --soft-accent: #263f37;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.appShell {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.appHeader,
+.taskComposer,
+.taskSection {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+.appHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 32px 34px;
+    border-radius: 22px 22px 0px 0px;
+    border-bottom: 0;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.heading {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.subtitle {
+    margin: 12px 0 0;
+    color: var(--muted);
+}
+
+.modeIcon {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--soft-accent);
+    color: var(--accent);
+}
+
+.modeIcon:hover,
+.modeIcon:focus-visible {
+    background: var(--accent);
+    color: #fff;
+}
+
+.taskComposer {
+    display: flex;
+    gap: 12px;
+    
+    padding: 14px;
+    border-radius: 0px 0px 22px 22px;
+    /* border:#151c1a 1px solid; */
+}
+
+.textArea {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#lname {
+    flex: 1;
+    height: 58px;
+    padding: 0 16px 0 20px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    outline: 0;
+    background: var(--page);
+    color: var(--ink);
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#lname:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(38, 122, 104, 0.12);
+}
+
+#lname::placeholder {
+    color: var(--muted);
+}
+
+.submit,
+.delete {
+    min-height: 48px;
+    width: 138px;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+    position: relative;
+}
+
+.submit {
+    background: var(--accent);
+}
+
+.submit:hover,
+.submit:focus-visible {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+
+
+
+.taskSection {
+    margin-top: 28px;
+    padding: 26px 28px;
+    border-radius: 16px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.sectionHeader h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.taskCount {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.todoArea {
+    display: grid;
+    gap: 8px;
+}
+
+.messageArea {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 58px;
+    padding: 10px 118px 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: border 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    position: relative;
+}
+
+.messageArea:hover {
+    border-color: var(--accent);
+    transform: translateX(2px);
+}
+
+.messageArea p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.messageAreaOnSelected {
+    border-color: var(--accent);
+    background: var(--soft-accent);
+}
+
+.timeStamp{
+    position: absolute;
+    right: 10px;
+    bottom: 50%;
+    padding: 5px 8px;
+    border: 1px solid rgba(38, 122, 104, 0.24);
+    border-radius: 999px;
+    color: var(--accent-dark);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: rgba(233, 243, 239, 0.62);
+    box-shadow: 0 4px 12px rgba(30, 56, 47, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transform: translateY(50%);
+    white-space: nowrap;
+}
+
+body.dark .timeStamp {
+    border-color: rgba(154, 190, 174, 0.22);
+    color: var(--ink);
+    background: rgba(38, 63, 55, 0.72);
+}
+
+.emptyState {
+    margin: 10px 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    text-align: center;
+}
+
+.delete {
+    display: block;
+    margin: 16px 0 0 auto;
+    min-height: 40px;
+    background: var(--danger);
+    font-size: 0.85rem;
+}
+
+.delete:hover,
+.delete:focus-visible {
+    background: #963b3b;
+}
+
+.btnAnimation::before{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    min-height: 40px;
+   backdrop-filter: blur(100px) ;
+    font-size: 0.85rem;
+}
+.btnAnimation::after {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: white;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 10px 0px;
+    }
+
+    .appShell{
+        width: 90%;
+    }
+
+    .appHeader {
+        padding: 26px 22px;
+    }
+
+    .taskComposer {
+        flex-direction: column;
+    }
+
+    .submit {
+        width: 100%;
+    }
+
+    .taskSection {
+        padding: 22px 18px;
+    }
+}
